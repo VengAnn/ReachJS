@@ -14,8 +14,20 @@ class Login extends Component {
     }
 
     render() {
+        //JSX
         return (
-            <div>Hello login</div>
+            <div className="login-background">
+                <div className='login-container'>
+                    <div className="login-content row">
+                        <div className="col-12 text-center">Login</div>
+                        <div className="col-12 form group">
+                            <label >Username</label>
+                            <input type="text" className='form-control' />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         )
     }
 }
