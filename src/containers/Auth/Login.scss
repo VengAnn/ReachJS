@@ -7,5 +7,68 @@
         width: 400px;
         height: 100%;
         margin: 0 auto;
+        background-color: white;
+
+        .login-content {
+            padding: 10px;
+
+            .text-login {
+                text-align: center;
+                font-weight: 600;
+                font-size: 24px;
+                padding-top: 10px;
+
+            }
+
+            .login-input {
+                margin: 7px 0;
+            }
+
+            .btn-login {
+                width: 100%;
+                height: 33px;
+                margin: 10px 0;
+                border-radius: 13px;
+                outline: none;
+                border: none;
+                background: linear-gradient(135deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+                color: white;
+            }
+
+            .forgot-password {
+                font-size: 12px;
+            }
+
+            .social-login {
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+
+                .google {
+                    font-size: 35px;
+                    background: #ff0707;
+                    border-radius: 50%;
+                    height: 50px;
+                    width: 50px;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                    color: white;
+                    margin-right: 10px;
+                }
+
+                .facebook {
+                    font-size: 35px;
+                    background: #1c19ab;
+                    border-radius: 50%;
+                    height: 50px;
+                    width: 50px;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                    color: white;
+                }
+            }
+        }
     }
 }
