@@ -1,15 +1,20 @@
+//link to weste bootstap 4
+//https://getbootstrap.com/docs/4.0/utilities/spacing/
+
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManager.scss';
 import { getAllUsers } from '../../services/userService';
+import ModalUser from './ModalUser';
 
 class UserManage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            arrUsers: []
+            arrUsers: [],
+            isOpenModalUser: false,
         }
     }
 
@@ -24,6 +29,18 @@ class UserManage extends Component {
             //console.log('check state user 1', this.state.arrUsers);
         }
 
+    }
+
+    handleAddNewUser = () => {
+        this.setState({
+            isOpenModalUser: true,
+        })
+    }
+
+    toggleUserModal = () => {
+        this.setState({
+            isOpenModalUser: !this.state.isOpenModalUser,
+        })
     }
 
     /**life cycle
@@ -42,7 +59,18 @@ class UserManage extends Component {
         let arrUsers = this.state.arrUsers
         return (
             <div className="users-container">
+                <ModalUser
+                    isOpen={this.state.isOpenModalUser}
+                    toggleFromParent={this.toggleUserModal}
+                    test={'test'}
+                />
                 <div className="title text-center"> Manager users With Veng Ann </div>
+                <div className="mx-1">
+                    <button
+                        className="btn btn-primary px-3"
+                        onClick={() => this.handleAddNewUser()}
+                    ><i className="fas fa-plus"></i> Add New Users</button>
+                </div>
                 <div className="user-table mt-3 mx-1">
                     <table id="customers">
                         <tr>

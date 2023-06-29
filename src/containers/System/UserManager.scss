@@ -53,3 +53,24 @@
 
     }
 }
+
+.modal-user-container {
+    .modal-user-body {
+        display: flex;
+        gap: 15px;
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+
+            input {
+                border-radius: 3px;
+                border: 1px solid green;
+                height: 30px;
+                outline: none;
+                padding: 0 10px;
+            }
+        }
+    }
+}
