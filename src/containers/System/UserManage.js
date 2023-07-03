@@ -5,8 +5,9 @@ import React, { Component } from 'react';
 //import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManager.scss';
-import { getAllUsers, createNewUserService, deleteUserService } from '../../services/userService';
+import { getAllUsers, createNewUserService, deleteUserService, editUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
+import ModalEditUser from './ModalEditUser';
 import { emitter } from '../../utils/emitter';
 
 class UserManage extends Component {
@@ -16,6 +17,8 @@ class UserManage extends Component {
         this.state = {
             arrUsers: [],
             isOpenModalUser: false,
+            isOpenModalEditUser: false,
+            userEdit: {}
         };
     }
 
@@ -45,6 +48,12 @@ class UserManage extends Component {
         });
     };
 
+    toggleUserEditModal = () => {
+        this.setState({
+            isOpenModalEditUser: !this.state.isOpenModalEditUser,
+        })
+    }
+
     createNewUser = async (data) => {
         try {
 
@@ -58,7 +67,7 @@ class UserManage extends Component {
                     isOpenModalUser: false
                 });
 
-                emitter.emit('EVENT_CLEAR_MODAL_DATA')   //, { 'id': 'your id' }
+                emitter.emit('EVENT_CLEAR_MODAL_DATA')    //use to clear modal        //, { 'id': 'your id' }
             }
             //console.log('response create user: ', response);
         } catch (e) {
@@ -70,7 +79,7 @@ class UserManage extends Component {
 
     handleDeleteUser = async (user) => {
         //alert('call delete')
-        console.log('delte: ', user);
+        //console.log('delte: ', user);
         try {
             let res = await deleteUserService(user.id);
             if (res && res.errcode === 0) {
@@ -79,11 +88,37 @@ class UserManage extends Component {
             else {
                 alert(res.errMessage);
             }
-            console.log(res);
+            //console.log(res);
         } catch (e) {
             console.log(e);
         }
 
+    }
+
+    handleEditUser = (user) => {
+        console.log('check edit user', user);
+        this.setState({
+            isOpenModalEditUser: true,
+            userEdit: user,
+        })
+    }
+
+    doEditUser = async (user) => {
+        try {
+            let res = await editUserService(user);
+            if (res && res.errcode === 0) {
+                this.setState({
+                    isOpenModalEditUser: false,
+                })
+
+                await this.getAllUsersFromReact()
+            }
+            else {
+                alert(res.errcode)
+            }
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     /**life cycle
@@ -107,6 +142,15 @@ class UserManage extends Component {
                     toggleFromParent={this.toggleUserModal}
                     createNewUser={this.createNewUser}
                 />
+                {
+                    this.state.isOpenModalEditUser &&
+                    <ModalEditUser
+                        isOpen={this.state.isOpenModalEditUser}
+                        toggleFromParent={this.toggleUserEditModal}
+                        currentUser={this.state.userEdit}
+                        editUser={this.doEditUser}
+                    />
+                }
                 <div className="title text-center"> Manager users With Veng Ann </div>
                 <div className="mx-1">
                     <button
@@ -125,7 +169,7 @@ class UserManage extends Component {
                                 <th>Action</th>
                             </tr>
                             {arrUsers && arrUsers.map((item, index) => {
-                                console.log('veng ann check map', item, index)
+                                //console.log('veng ann check map', item, index)
                                 return (
                                     <tr key={index}>
                                         <td>{item.email}</td>
@@ -133,7 +177,7 @@ class UserManage extends Component {
                                         <td>{item.lastName}</td>
                                         <td>{item.address}</td>
                                         <td>
-                                            <button className="btn btn-edit"><i className="fas fa-edit"></i></button>
+                                            <button className="btn btn-edit" onClick={() => this.handleEditUser(item)}><i className="fas fa-edit"></i></button>
                                             <button className="btn btn-delete" onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
