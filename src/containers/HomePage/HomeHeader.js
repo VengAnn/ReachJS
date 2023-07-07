@@ -9,7 +9,32 @@ class HomeHeader extends Component {
         return (
             <div className="home-header-container">
                 <div className="home-header-content">
-
+                    <div className="left-content">
+                        <i classname="fas fa-bars"></i>
+                        <div className="header-logo"></div>
+                    </div>
+                    <div className="center-content">
+                        <div className="child-content">
+                            <div><b>Chuyển khoa</b></div>
+                            <div className="subs-title">Tìm bác sĩ theo chuyên khoa </div>
+                        </div>
+                        <div className="child-content">
+                            <div><b>Cơ Sở y tế</b></div>
+                            <div className="subs-title">Chọn bẹnhe viện phòng khám</div>
+                        </div>
+                        <div className="child-content">
+                            <div><b>Bác sĩ</b></div>
+                            <div className="subs-title">Chọn Bác sĩ giỏi</div>
+                        </div>
+                        <div className="child-content">
+                            <div><b>Gói khám</b></div>
+                            <div className="subs-title">Khám sức khỏe tổng quất</div>
+                        </div>
+                    </div>
+                    <div className="right-content">
+                        <div className="support"><i class="far fa-question-circle"></i> Hỗ trợ</div>
+                        <div className="flag">VN</div>
+                    </div>
                 </div>
             </div>
         );
