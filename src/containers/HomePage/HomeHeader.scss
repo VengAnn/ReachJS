@@ -1,7 +1,7 @@
 .home-header-container {
     height: 60px;
     width: 100%;
-    padding: 0 20px; //top and bottom not change this change left 20px and right 20px
+    padding: 0 40px; //top and bottom not change this change left 20px and right 20px
 
     .home-header-content {
         width: 100%;
@@ -9,28 +9,31 @@
         display: flex; //display for row
 
         .left-content {
-            width: 25%;
+            width: 20%;
             display: flex;
             align-items: center;
-            border: 1px solid green;
+            //border: 1px solid green;
 
             .header-logo {
-                background: url('../../assets/bookingcare-2020.svg') center center no-repeat;
                 height: 100%;
                 width: 100%;
                 cursor: pointer;
+                transform: scale(0.6, 0.6);
+                margin-left: -45px;
             }
 
-            .i {
-                font-size: 25px;
+            i {
+                font-size: 27px;
                 color: grey;
                 cursor: pointer;
+                margin-left: 37px;
+                margin-right: -5px;
             }
         }
 
         .center-content {
-            width: 50%;
-            border: 1px solid yellow;
+            width: 55%;
+            //border: 1px solid yellow;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,10 +48,146 @@
 
         .right-content {
             width: 25%;
-            border: 1px solid gray;
+            //border: 1px solid gray;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
+
+            .support {
+                cursor: pointer;
+                padding: 70px;
+                display: flex;
+                align-items: center;
+
+                i {
+                    font-size: 15px;
+                    margin-right: 5px;
+                }
+            }
+
+            .language-vi {
+                cursor: pointer;
+
+                &.action {
+                    color: orange;
+                }
+            }
+
+            .language-en {
+                margin: 0 10px;
+                cursor: pointer;
+
+                &.action {
+                    color: blue;
+                }
+            }
         }
     }
+}
+
+.home-header-banner {
+    background: url('../../assets/Header-background.jpg');
+    height: 630px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+
+    .content-up {
+        height: 65%;
+        //border: 1px solid red;
+        padding-top: 15px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.1));
+
+        .title1 {
+            text-align: center;
+            font-size: 30px;
+            text-shadow: 1px 1px 1px #333;
+            margin-bottom: 5px;
+            color: white;
+            margin-top: 30px;
+
+        }
+
+        .title2 {
+            text-align: center;
+            font-size: 30px;
+            text-shadow: 1px 1px 1px #333;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .search {
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            padding: 10px;
+            border-radius: 30px;
+            background: #f7d800;
+
+            i {
+                margin: 0 5px;
+            }
+
+            input {
+                height: 30px;
+                width: 380px;
+                background: transparent;
+                border: none;
+                outline: none;
+            }
+        }
+    }
+
+    .content-down {
+        height: 35%;
+        //border: 1px solid green;
+        display: flex;
+        align-items: self-start;
+        //flex-direction: row;
+        justify-content: center;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
+
+        .options {
+            text-align: center;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+
+            .option-child {
+                //border: 1px solid red;
+                width: 100px;
+
+                .icon-child {
+                    background: white;
+                    width: fit-content;
+                    border-radius: 50%;
+                    text-align: center;
+                    width: 50px;
+                    height: 50px;
+                    margin: 0 auto;
+                    padding: 8px;
+
+                    i {
+                        color: #ff00b8;
+                        font-size: 30px;
+                    }
+                }
+
+                .text-child {
+                    font-size: 17px;
+                    font-weight: 500;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: blue;
+                    }
+                }
+            }
+        }
+    }
+
 }
